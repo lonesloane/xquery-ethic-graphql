@@ -1,0 +1,34 @@
+
+buildscript {
+  repositories {
+    mavenLocal()
+    jcenter {url "https://jcenter.bintray.com/"}
+    maven {url "http://developer.marklogic.com/maven2/"}
+  }
+  dependencies {
+//    classpath "com.marklogic:marklogic-unit-test-client:1.0.0"
+    classpath "com.marklogic:ml-gradle:4.0.1"
+  }
+}
+
+plugins {
+  id "net.saliman.properties" version "1.4.6"
+  id "com.marklogic.ml-gradle" version "4.0.1"
+	id "maven-publish"
+}
+
+repositories {
+    mavenLocal()
+    jcenter {url "https://jcenter.bintray.com/"}
+    maven {url "http://developer.marklogic.com/maven2/"}
+}
+
+dependencies {
+    mlBundle "graph.x.ql:graphXql:1.0.0-SNAPSHOT"
+//  mlBundle "com.marklogic:marklogic-unit-test-modules:1.0.0"
+}
+
+configurations {
+	bundle
+}
+

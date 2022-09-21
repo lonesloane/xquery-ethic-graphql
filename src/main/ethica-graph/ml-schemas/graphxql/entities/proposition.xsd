@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://graph.x.ql" xmlns:gxql="http://graph.x.ql">
+
+    <xs:complexType name="Proposition">
+        <xs:sequence>
+            <xs:element name="partNumber" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="itemNumber" type="xs:int" minOccurs="1" maxOccurs="1" />
+            <xs:element name="uri" type="xs:string" minOccurs="1" />
+            <xs:element name="name" type="xs:string" minOccurs="1" />
+            <xs:element name="text" type="xs:string" minOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="proposition" type="gxql:Proposition">
+        <xs:annotation>
+            <xs:documentation>Ethics Proposition Type</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+</xs:schema>

@@ -1,0 +1,10 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        jcenter {url "https://jcenter.bintray.com/"}
+        maven {url "http://developer.marklogic.com/maven2/"}
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'ethicaGraph'
+

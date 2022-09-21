@@ -1,0 +1,82 @@
+<Schema xmlns="http://graph.x.qls">
+
+    <description>GraphQL schema for Spinoza's Ethics</description>
+
+    <types>
+
+        <Type name="Proposition">
+            <fields>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+            </fields>
+        </Type>
+
+    </types>
+
+    <Query name="Query">
+        <fields>
+
+            <field name="proposition">
+                <Type name="Proposition" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+        </fields>
+    </Query>
+
+    <directives>
+        <Directive name="skip" isRepeatable="false">
+            <locations>
+                <location>FIELD</location>
+                <location>FRAGMENT_SPREAD</location>
+                <location>INLINE_FRAGMENT</location>
+            </locations>
+            <args>
+                <Arg name="if" nullable="false">
+                    <Type name="Boolean" kind="Scalar" />
+                </Arg>
+            </args>
+        </Directive>
+        <Directive name="include" isRepeatable="false">
+            <locations>
+                <location>FIELD</location>
+                <location>FRAGMENT_SPREAD</location>
+                <location>INLINE_FRAGMENT</location>
+            </locations>
+            <args>
+                <Arg name="if" nullable="false">
+                    <Type name="Boolean" kind="Scalar" />
+                </Arg>
+            </args>
+        </Directive>
+    </directives>
+
+    <scalars>
+        <Int />
+        <Float />
+        <String />
+        <Boolean />
+        <ID />
+    </scalars>
+
+</Schema>
