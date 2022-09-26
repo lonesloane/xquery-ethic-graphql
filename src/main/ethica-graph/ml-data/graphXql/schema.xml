@@ -4,12 +4,123 @@
 
     <types>
 
-        <Type name="Proposition">
+        <Type name="AffectionDefinition">
             <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
                 <field name="itemNumber">
                     <Type name="Int"/>
                 </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="AffectionDefinitionExplanation">
+            <fields>
                 <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="affectionDefinitionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="GeneralDefinition">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="GeneralDefinitionExplanation">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="GeneralDefinition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="Axiom">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
                     <Type name="Int"/>
                 </field>
                 <field name="name">
@@ -24,15 +135,639 @@
             </fields>
         </Type>
 
+        <Type name="Appendix">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="AppendixChapter">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="Definition">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="DefinitionExplanation">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="definitionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Definition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="Postulate">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="Preface">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="Proposition">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionAxiom">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionCorollary">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionDemonstration">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionLemme">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionPostulate">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionScolia">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="EthicItem">
+            <fields>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="EthicItem" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
     </types>
 
     <Query name="Query">
         <fields>
 
+            <field name="affectionDefinition">
+                <Type name="AffectionDefinition" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="affectionDefinitionExplanation">
+                <Type name="AffectionDefinitionExplanation" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="affectionDefinitionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="generalDefinition">
+                <Type name="GeneralDefinition" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="generalDefinitionExplanation">
+                <Type name="GeneralDefinitionExplanation" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="appendix">
+                <Type name="Appendix" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="appendixChapter">
+                <Type name="AppendixChapter" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="axiom">
+                <Type name="Axiom" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="definition">
+                <Type name="Definition" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="definitionExplanation">
+                <Type name="DefinitionExplanation" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="definitionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="postulate">
+                <Type name="Postulate" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="preface">
+                <Type name="Preface" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
             <field name="proposition">
                 <Type name="Proposition" />
                 <args>
                     <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionDemonstration">
+                <Type name="PropositionDemonstration" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionCorollary">
+                <Type name="PropositionCorollary" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionScolia">
+                <Type name="PropositionScolia" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionLemme">
+                <Type name="PropositionLemme" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionPostulate">
+                <Type name="PropositionPostulate" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
                         <Type name ="Int" kind="Scalar"/>
                     </Arg>
                     <Arg name="itemNumber" nullable="false">

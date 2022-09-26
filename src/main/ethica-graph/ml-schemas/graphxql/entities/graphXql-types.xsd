@@ -1,7 +1,295 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-           targetNamespace="http://graph.x.ql">
+           targetNamespace="http://graph.x.ql" xmlns:gxql="http://graph.x.ql">
 
-  <xs:include schemaLocation="/graphxql/entities/proposition.xsd" />
+  <xs:complexType name="EthicItem">
+    <xs:sequence>
+      <xs:element name="partNumber" type="xs:int"/>
+      <xs:element name="itemNumber" type="xs:int"/>
+      <xs:element name="uri" type="xs:string"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="text" type="xs:string"/>
+      <xs:element name="references">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="reference" type="gxql:Proposition" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AffectionDefinition">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="descendants">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="affectionDefinition" type="gxql:AffectionDefinition">
+    <xs:annotation>
+      <xs:documentation>Ethics Affection Definition Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="AffectionDefinitionExplanation">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="affectionDefinitionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="affectionDefinitionExplanation" type="gxql:AffectionDefinitionExplanation">
+    <xs:annotation>
+      <xs:documentation>Ethics Affection Definition Explanation Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="GeneralDefinition">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="descendants">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="generalDefinition" type="gxql:GeneralDefinition">
+    <xs:annotation>
+      <xs:documentation>Ethics Affections General Definition Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="GeneralDefinitionExplanation">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="generalDefinitionExplanation" type="gxql:GeneralDefinitionExplanation">
+    <xs:annotation>
+      <xs:documentation>Ethics Affections General Definition Explanation Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="Appendix">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="appendix" type="gxql:Appendix">
+    <xs:annotation>
+      <xs:documentation>Ethics Appendix Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="AppendixChapter">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="appendixChapter" type="gxql:AppendixChapter">
+    <xs:annotation>
+      <xs:documentation>Ethics Appendix Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="Axiom">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="axiom" type="gxql:Axiom">
+    <xs:annotation>
+      <xs:documentation>Ethics Axiom Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="Definition">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="descendants">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="definition" type="gxql:Definition">
+    <xs:annotation>
+      <xs:documentation>Ethics Definition Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="DefinitionExplanation">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="definitionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="definitionExplanation" type="gxql:DefinitionExplanation">
+    <xs:annotation>
+      <xs:documentation>Ethics Definition Explanation Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="Postulate">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="postulate" type="gxql:Postulate">
+    <xs:annotation>
+      <xs:documentation>Ethics Postulate Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="Preface">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="preface" type="gxql:Preface">
+    <xs:annotation>
+      <xs:documentation>Ethics Preface Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="Proposition">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="descendants">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="proposition" type="gxql:Proposition">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionDemonstration">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionDemonstration" type="gxql:PropositionDemonstration">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Demonstration Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionScolia">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionScolia" type="gxql:PropositionScolia">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Scolia Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionPostulate">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionPostulate" type="gxql:PropositionPostulate">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Postulate Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionCorollary">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionCorollary" type="gxql:PropositionCorollary">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Corollary Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionLemme">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionLemme" type="gxql:PropositionLemme">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Lemme Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
 
 </xs:schema>
