@@ -2,7 +2,9 @@ xquery version "1.0-ml";
 
 module namespace gxqlr = "http://graph.x.ql/resolvers";
 import module namespace gxqlr = "http://graph.x.ql/resolvers"
-    at "/graphXql/resolvers/ethic-item-resolver.xqy";
+    at "/graphXql/resolvers/ethic-item-resolver.xqy",
+       "/graphXql/resolvers/proposition-corollary-demonstration-resolver.xqy",
+       "/graphXql/resolvers/proposition-corollary-scolia-resolver.xqy";
 
 import schema namespace gxql ="http://graph.x.ql"
     at "/graphxql/entities/graphXql-types.xsd";
@@ -42,6 +44,7 @@ declare function gxqlr:proposition-corollary-field-resolver($field-name as xs:st
     else if ($field-name eq 'itemNumber') then xdmp:function(xs:QName('gxqlr:item-itemNumber-resolver'))
     else if ($field-name eq 'references') then xdmp:function(xs:QName('gxqlr:item-references-resolver'))
     else if ($field-name eq 'propositionNumber') then xdmp:function(xs:QName('gxqlr:proposition-corollary-propositionNumber-resolver'))
+    else if ($field-name eq 'descendants') then xdmp:function(xs:QName('gxqlr:item-descendants-resolver'))
     else
         fn:error((), 'FIELD RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported field: "||$field-name))
 };

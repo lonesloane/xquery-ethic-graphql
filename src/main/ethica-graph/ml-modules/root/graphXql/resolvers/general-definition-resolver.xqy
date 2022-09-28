@@ -41,20 +41,7 @@ declare function gxqlr:general-definition-field-resolver($field-name as xs:strin
     else if ($field-name eq 'text') then xdmp:function(xs:QName('gxqlr:item-text-resolver'))
     else if ($field-name eq 'partNumber') then xdmp:function(xs:QName('gxqlr:item-partNumber-resolver'))
     else if ($field-name eq 'itemNumber') then xdmp:function(xs:QName('gxqlr:item-itemNumber-resolver'))
-    else if ($field-name eq 'descendants') then xdmp:function(xs:QName('gxqlr:general-definition-descendants-resolver'))
+    else if ($field-name eq 'descendants') then xdmp:function(xs:QName('gxqlr:item-descendants-resolver'))
     else
         fn:error((), 'FIELD RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported field: "||$field-name))
-};
-
-declare function gxqlr:general-definition-descendants-resolver($item as element(*, gxql:GeneralDefinition), $var-map as map:map)
-{
-    let $descendant-maps := gxqlr:find-descendants($item/uri/fn:string())
-    for $descendant-map in $descendant-maps
-        let $descendant-uri := map:get($descendant-map, 'descendant')
-        let $descendant-type := map:get($descendant-map, 'type')
-        let $var-map := map:map() => map:with('uri', $descendant-uri)
-        return
-            switch ($descendant-type)
-            case 'http://ethica.graph.ql/Model#Definition-Explanation' return gxqlr:general-definition-explanation-entity-resolver($var-map)
-            default return fn:error((), 'RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported descendant-type: "||$descendant-type))
 };

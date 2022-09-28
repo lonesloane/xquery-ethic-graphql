@@ -8,8 +8,16 @@ import module namespace gxqlr = "http://graph.x.ql/resolvers"
     "/graphXql/resolvers/definition-explanation-resolver.xqy",
     "/graphXql/resolvers/proposition-resolver.xqy",
     "/graphXql/resolvers/proposition-demonstration-resolver.xqy",
+    "/graphXql/resolvers/proposition-axiom-resolver.xqy",
     "/graphXql/resolvers/proposition-corollary-resolver.xqy",
+    "/graphXql/resolvers/proposition-corollary-demonstration-resolver.xqy",
+    "/graphXql/resolvers/proposition-corollary-scolia-resolver.xqy",
     "/graphXql/resolvers/proposition-lemme-resolver.xqy",
+    "/graphXql/resolvers/proposition-lemme-axiom-resolver.xqy",
+    "/graphXql/resolvers/proposition-lemme-corollary-resolver.xqy",
+    "/graphXql/resolvers/proposition-lemme-definition-resolver.xqy",
+    "/graphXql/resolvers/proposition-lemme-demonstration-resolver.xqy",
+    "/graphXql/resolvers/proposition-lemme-scolia-resolver.xqy",
     "/graphXql/resolvers/proposition-scolia-resolver.xqy",
     "/graphXql/resolvers/proposition-postulate-resolver.xqy",
     "/graphXql/resolvers/affection-definition-resolver.xqy",
@@ -34,7 +42,15 @@ declare function gxqlr:get-entity-resolver($entity-name as xs:string) as xdmp:fu
     else if ($entity-name eq 'propositionScolia') then xdmp:function(xs:QName('gxqlr:proposition-scolia-entity-resolver'))
     else if ($entity-name eq 'propositionPostulate') then xdmp:function(xs:QName('gxqlr:proposition-postulate-entity-resolver'))
     else if ($entity-name eq 'propositionCorollary') then xdmp:function(xs:QName('gxqlr:proposition-corollary-entity-resolver'))
+    else if ($entity-name eq 'propositionCorollaryDemonstration') then xdmp:function(xs:QName('gxqlr:proposition-corollary-demonstration-entity-resolver'))
+    else if ($entity-name eq 'propositionCorollaryScolia') then xdmp:function(xs:QName('gxqlr:proposition-corollary-scolia-entity-resolver'))
+    else if ($entity-name eq 'propositionAxiom') then xdmp:function(xs:QName('gxqlr:proposition-axiom-entity-resolver'))
     else if ($entity-name eq 'propositionLemme') then xdmp:function(xs:QName('gxqlr:proposition-lemme-entity-resolver'))
+    else if ($entity-name eq 'propositionLemmeAxiom') then xdmp:function(xs:QName('gxqlr:proposition-lemme-axiom-entity-resolver'))
+    else if ($entity-name eq 'propositionLemmeCorollary') then xdmp:function(xs:QName('gxqlr:proposition-lemme-corollary-entity-resolver'))
+    else if ($entity-name eq 'propositionLemmeDefinition') then xdmp:function(xs:QName('gxqlr:proposition-lemme-definition-entity-resolver'))
+    else if ($entity-name eq 'propositionLemmeDemonstration') then xdmp:function(xs:QName('gxqlr:proposition-lemme-demonstration-entity-resolver'))
+    else if ($entity-name eq 'propositionLemmeScolia') then xdmp:function(xs:QName('gxqlr:proposition-lemme-scolia-entity-resolver'))
     else if ($entity-name eq 'affectionDefinition') then xdmp:function(xs:QName('gxqlr:affection-definition-entity-resolver'))
     else if ($entity-name eq 'affectionDefinitionExplanation') then xdmp:function(xs:QName('gxqlr:affection-definition-explanation-entity-resolver'))
     else if ($entity-name eq 'generalDefinition') then xdmp:function(xs:QName('gxqlr:general-definition-entity-resolver'))
@@ -63,7 +79,15 @@ declare function gxqlr:get-field-resolver($entity as element(), $field-name as x
             case $o as element(*, gxql:Proposition) return gxqlr:proposition-field-resolver($field-name)
             case $o as element(*, gxql:PropositionDemonstration) return gxqlr:proposition-demonstration-field-resolver($field-name)
             case $o as element(*, gxql:PropositionCorollary) return gxqlr:proposition-corollary-field-resolver($field-name)
+            case $o as element(*, gxql:PropositionCorollaryDemonstration) return gxqlr:proposition-corollary-demonstration-field-resolver($field-name)
+            case $o as element(*, gxql:PropositionCorollaryScolia) return gxqlr:proposition-corollary-scolia-field-resolver($field-name)
+            case $o as element(*, gxql:PropositionAxiom) return gxqlr:proposition-axiom-field-resolver($field-name)
             case $o as element(*, gxql:PropositionLemme) return gxqlr:proposition-lemme-field-resolver($field-name)
+            case $o as element(*, gxql:PropositionLemmeAxiom) return gxqlr:proposition-lemme-axiom-field-resolver($field-name)
+            case $o as element(*, gxql:PropositionLemmeCorollary) return gxqlr:proposition-lemme-corollary-field-resolver($field-name)
+            case $o as element(*, gxql:PropositionLemmeDefinition) return gxqlr:proposition-lemme-definition-field-resolver($field-name)
+            case $o as element(*, gxql:PropositionLemmeDemonstration) return gxqlr:proposition-lemme-demonstration-field-resolver($field-name)
+            case $o as element(*, gxql:PropositionLemmeScolia) return gxqlr:proposition-lemme-scolia-field-resolver($field-name)
             case $o as element(*, gxql:PropositionScolia) return gxqlr:proposition-scolia-field-resolver($field-name)
             case $o as element(*, gxql:PropositionPostulate) return gxqlr:proposition-postulate-field-resolver($field-name)
             case $o as element(*, gxql:Appendix) return gxqlr:appendix-field-resolver($field-name)
@@ -100,7 +124,15 @@ declare function gxqlr:typename-resolver($entity as element(), $var-map as map:m
         case $o as element(*, gxql:DefinitionExplanation) return 'DefinitionExplanation'
         case $o as element(*, gxql:Proposition) return 'Proposition'
         case $o as element(*, gxql:PropositionDemonstration) return 'PropositionDemonstration'
+        case $o as element(*, gxql:PropositionAxiom) return 'PropositionAxiom'
         case $o as element(*, gxql:PropositionCorollary) return 'PropositionCorollary'
+        case $o as element(*, gxql:PropositionCorollaryDemonstration) return 'PropositionCorollaryDemonstration'
+        case $o as element(*, gxql:PropositionCorollaryScolia) return 'PropositionCorollaryScolia'
+        case $o as element(*, gxql:PropositionLemmeAxiom) return 'PropositionLemmeAxiom'
+        case $o as element(*, gxql:PropositionLemmeCorollary) return 'PropositionLemmeCorollary'
+        case $o as element(*, gxql:PropositionLemmeDefinition) return 'PropositionLemmeDefinition'
+        case $o as element(*, gxql:PropositionLemmeDemonstration) return 'PropositionLemmeDemonstration'
+        case $o as element(*, gxql:PropositionLemmeScolia) return 'PropositionLemmeScolia'
         case $o as element(*, gxql:PropositionLemme) return 'PropositionLemme'
         case $o as element(*, gxql:PropositionScolia) return 'PropositionScolia'
         case $o as element(*, gxql:PropositionPostulate) return 'PropositionPostulate'

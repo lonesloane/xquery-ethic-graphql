@@ -382,6 +382,83 @@
                     </args>
                     <Type name="Proposition" kind="List" />
                 </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionCorollaryDemonstration">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionCorollaryNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionCorollaryScolia">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionCorollaryNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
             </fields>
         </Type>
 
@@ -435,6 +512,194 @@
                 </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionLemmeAxiom">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionLemmeNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionLemmeCorollary">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionLemmeNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionLemmeDefinition">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionLemmeNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionLemmeDemonstration">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionLemmeNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="references">
+                    <args>
+                        <Arg name="offset">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                        <Arg name="length">
+                            <Type name="Int" kind="Scalar" />
+                        </Arg>
+                    </args>
+                    <Type name="Proposition" kind="List" />
+                </field>
+            </fields>
+        </Type>
+
+        <Type name="PropositionLemmeScolia">
+            <fields>
+                <field name="partNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="itemNumber">
+                    <Type name="Int"/>
+                </field>
+                <field name="name">
+                    <Type name="String"/>
+                </field>
+                <field name="uri">
+                    <Type name="String"/>
+                </field>
+                <field name="text">
+                    <Type name="String"/>
+                </field>
+                <field name="propositionLemmeNumber">
+                    <Type name="Int"/>
                 </field>
                 <field name="propositionNumber">
                     <Type name="Int"/>
@@ -701,6 +966,21 @@
                 </args>
             </field>
 
+            <field name="propositionAxiom">
+                <Type name="PropositionAxiom" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
             <field name="propositionDemonstration">
                 <Type name="PropositionDemonstration" />
                 <args>
@@ -731,6 +1011,42 @@
                 </args>
             </field>
 
+            <field name="propositionCorollaryDemonstration">
+                <Type name="PropositionCorollaryDemonstration" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionCorollaryNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionCorollaryScolia">
+                <Type name="PropositionCorollaryScolia" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionCorollaryNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
             <field name="propositionScolia">
                 <Type name="PropositionScolia" />
                 <args>
@@ -750,6 +1066,96 @@
                 <Type name="PropositionLemme" />
                 <args>
                     <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionLemmeAxiom">
+                <Type name="PropositionLemmeAxiom" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionLemmeNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionLemmeCorollary">
+                <Type name="PropositionLemmeCorollary" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionLemmeNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionLemmeDefinition">
+                <Type name="PropositionLemmeDefinition" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionLemmeNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionLemmeDemonstration">
+                <Type name="PropositionLemmeDemonstration" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionLemmeNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="itemNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="propositionLemmeScolia">
+                <Type name="PropositionLemmeScolia" />
+                <args>
+                    <Arg name="partNumber" nullable="false">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                    <Arg name="propositionLemmeNumber" nullable="false">
                         <Type name ="Int" kind="Scalar"/>
                     </Arg>
                     <Arg name="propositionNumber" nullable="false">

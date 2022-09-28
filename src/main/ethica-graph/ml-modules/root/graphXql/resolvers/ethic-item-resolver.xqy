@@ -4,13 +4,24 @@ module namespace gxqlr = "http://graph.x.ql/resolvers";
 import module namespace gxqlr = "http://graph.x.ql/resolvers"
     at "/graphXql/resolvers/proposition-resolver.xqy",
         "/graphXql/resolvers/affection-definition-resolver.xqy",
+        "/graphXql/resolvers/axiom-resolver.xqy",
         "/graphXql/resolvers/definition-resolver.xqy",
         "/graphXql/resolvers/general-definition-resolver.xqy",
+        "/graphXql/resolvers/proposition-axiom-resolver.xqy",
         "/graphXql/resolvers/proposition-demonstration-resolver.xqy",
         "/graphXql/resolvers/proposition-corollary-resolver.xqy",
         "/graphXql/resolvers/proposition-lemme-resolver.xqy",
         "/graphXql/resolvers/proposition-postulate-resolver.xqy",
-        "/graphXql/resolvers/proposition-scolia-resolver.xqy";
+        "/graphXql/resolvers/proposition-scolia-resolver.xqy",
+        "/graphXql/resolvers/definition-explanation-resolver.xqy",
+        "/graphXql/resolvers/general-definition-explanation-resolver.xqy",
+        "/graphXql/resolvers/proposition-corollary-demonstration-resolver.xqy",
+        "/graphXql/resolvers/proposition-corollary-scolia-resolver.xqy",
+        "/graphXql/resolvers/proposition-lemme-axiom-resolver.xqy",
+        "/graphXql/resolvers/proposition-lemme-demonstration-resolver.xqy",
+        "/graphXql/resolvers/proposition-lemme-definition-resolver.xqy",
+        "/graphXql/resolvers/proposition-lemme-corollary-resolver.xqy",
+        "/graphXql/resolvers/proposition-lemme-scolia-resolver.xqy";
 
 import schema namespace gxql ="http://graph.x.ql"
     at "/graphxql/entities/graphXql-types.xsd";
@@ -65,6 +76,7 @@ declare function gxqlr:item-references-resolver($item as element(*, gxql:EthicIt
             switch ($reference-type)
             case 'http://ethica.graph.ql/Model#Affection-Definition' return gxqlr:affection-definition-entity-resolver($var-map)
             case 'http://ethica.graph.ql/Model#Affections-General-Definition' return gxqlr:general-definition-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Axiom' return gxqlr:axiom-entity-resolver($var-map)
             case 'http://ethica.graph.ql/Model#Definition' return gxqlr:definition-entity-resolver($var-map)
             case 'http://ethica.graph.ql/Model#Proposition' return gxqlr:proposition-entity-resolver($var-map)
             case 'http://ethica.graph.ql/Model#Proposition-Demonstration' return gxqlr:proposition-demonstration-entity-resolver($var-map)
@@ -73,6 +85,33 @@ declare function gxqlr:item-references-resolver($item as element(*, gxql:EthicIt
             case 'http://ethica.graph.ql/Model#Proposition-Corollary' return gxqlr:proposition-corollary-entity-resolver($var-map)
             case 'http://ethica.graph.ql/Model#Proposition-Lemme' return gxqlr:proposition-lemme-entity-resolver($var-map)
             default return fn:error((), 'RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported reference-type: "||$reference-type))
+};
+
+declare function gxqlr:item-descendants-resolver($item as element(*, gxql:EthicItem), $var-map as map:map)
+{
+    let $descendant-maps := gxqlr:find-descendants($item/uri/fn:string())
+    for $descendant-map in $descendant-maps
+        let $descendant-uri := map:get($descendant-map, 'descendant')
+        let $descendant-type := map:get($descendant-map, 'type')
+        let $var-map := map:map() => map:with('uri', $descendant-uri)
+        return
+            switch ($descendant-type)
+            case 'http://ethica.graph.ql/Model#Proposition-Axiom' return gxqlr:proposition-axiom-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Corollary' return gxqlr:proposition-corollary-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Demonstration' return gxqlr:proposition-demonstration-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Lemme' return gxqlr:proposition-lemme-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Postulate' return gxqlr:proposition-postulate-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Scolia' return gxqlr:proposition-scolia-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Definition-Explanation' return gxqlr:definition-explanation-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Affections-General-Definition-Explanation' return gxqlr:general-definition-explanation-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Corollary-Demonstration' return gxqlr:proposition-corollary-demonstration-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Corollary-Scolia' return gxqlr:proposition-corollary-scolia-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Lemme-Axiom' return gxqlr:proposition-lemme-axiom-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Lemme-Definition' return gxqlr:proposition-lemme-definition-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Lemme-Demonstration' return gxqlr:proposition-lemme-demonstration-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Lemme-Scolia' return gxqlr:proposition-lemme-scolia-entity-resolver($var-map)
+            case 'http://ethica.graph.ql/Model#Proposition-Lemme-Corollary' return gxqlr:proposition-lemme-corollary-entity-resolver($var-map)
+            default return fn:error((), 'RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported descendant-type: "||$descendant-type))
 };
 
 declare function gxqlr:find-references($item-uri as xs:string) as map:map*
@@ -92,9 +131,12 @@ declare function gxqlr:find-descendants($item-uri as xs:string) as map:map*
 {
     let $sparql := '
         prefix eth:<http://ethica.graph.ql/Model#>
+        prefix skos: <http://www.w3.org/2004/02/skos/core#>
+
         select ?descendant ?type
         where {
-          ?descendant eth:refersTo ?item .
+          ?descendant ?related ?item .
+          eth:descendantOf skos:broader ?related .
           ?descendant a ?type .
         }'
     return

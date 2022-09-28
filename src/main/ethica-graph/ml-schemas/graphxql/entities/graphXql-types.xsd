@@ -212,6 +212,22 @@
     </xs:annotation>
   </xs:element>
 
+  <xs:complexType name="PropositionAxiom">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionAxiom" type="gxql:PropositionAxiom">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Axiom Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
   <xs:complexType name="PropositionDemonstration">
     <xs:complexContent>
       <xs:extension base="gxql:EthicItem">
@@ -221,6 +237,63 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+
+  <xs:complexType name="PropositionCorollary">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionNumber" type="xs:int"/>
+          <xs:element name="descendants">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionCorollary" type="gxql:PropositionCorollary">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Corollary Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionCorollaryDemonstration">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionCorollaryNumber" type="xs:int"/>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionCorollaryDemonstration" type="gxql:PropositionCorollaryDemonstration">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Corollary Demonstration Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionCorollaryScolia">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionCorollaryNumber" type="xs:int"/>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionCorollaryScolia" type="gxql:PropositionCorollaryScolia">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Corollary Demonstration Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
 
   <xs:element name="propositionDemonstration" type="gxql:PropositionDemonstration">
     <xs:annotation>
@@ -260,27 +333,18 @@
     </xs:annotation>
   </xs:element>
 
-  <xs:complexType name="PropositionCorollary">
-    <xs:complexContent>
-      <xs:extension base="gxql:EthicItem">
-        <xs:sequence>
-          <xs:element name="propositionNumber" type="xs:int"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:element name="propositionCorollary" type="gxql:PropositionCorollary">
-    <xs:annotation>
-      <xs:documentation>Ethics Proposition Corollary Type</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-
   <xs:complexType name="PropositionLemme">
     <xs:complexContent>
       <xs:extension base="gxql:EthicItem">
         <xs:sequence>
           <xs:element name="propositionNumber" type="xs:int"/>
+          <xs:element name="descendants">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -289,6 +353,91 @@
   <xs:element name="propositionLemme" type="gxql:PropositionLemme">
     <xs:annotation>
       <xs:documentation>Ethics Proposition Lemme Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionLemmeAxiom">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionLemmeNumber" type="xs:int"/>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionLemmeAxiom" type="gxql:PropositionLemmeAxiom">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Lemme Axiom Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionLemmeCorollary">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionLemmeNumber" type="xs:int"/>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionLemmeCorollary" type="gxql:PropositionLemmeCorollary">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Lemme Axiom Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionLemmeDefinition">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionLemmeNumber" type="xs:int"/>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionLemmeDefinition" type="gxql:PropositionLemmeDefinition">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Lemme Definition Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionLemmeDemonstration">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionLemmeNumber" type="xs:int"/>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionLemmeDemonstration" type="gxql:PropositionLemmeDemonstration">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Lemme Demonstration Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="PropositionLemmeScolia">
+    <xs:complexContent>
+      <xs:extension base="gxql:EthicItem">
+        <xs:sequence>
+          <xs:element name="propositionLemmeNumber" type="xs:int"/>
+          <xs:element name="propositionNumber" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="propositionLemmeScolia" type="gxql:PropositionLemmeScolia">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Lemme Scolia Type</xs:documentation>
     </xs:annotation>
   </xs:element>
 
