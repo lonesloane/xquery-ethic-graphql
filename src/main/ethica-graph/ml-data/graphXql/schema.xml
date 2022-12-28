@@ -966,6 +966,15 @@
                 </args>
             </field>
 
+            <field name="propositions">
+                <Type name="Proposition" kind="List"/>
+                <args>
+                    <Arg name="partNumber" nullable="true">
+                        <Type name="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
             <field name="propositionAxiom">
                 <Type name="PropositionAxiom" />
                 <args>

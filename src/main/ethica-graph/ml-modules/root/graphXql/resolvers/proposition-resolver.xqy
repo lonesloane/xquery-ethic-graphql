@@ -39,6 +39,27 @@ declare function gxqlr:proposition-entity-resolver($var-map as map:map) as eleme
         }
 };
 
+declare function gxqlr:propositions-entity-resolver($var-map as map:map) as element(*, gxql:Proposition)*
+{
+    let $part-number := map:get($var-map, 'partNumber')
+    let $uris :=
+        cts:uris('', (), cts:and-query((
+              cts:element-value-query(xs:QName('eth:type'), 'Proposition'),
+              (if (map:contains($var-map, 'partNumber'))
+              then cts:element-value-query(xs:QName('eth:part-number'), map:get($var-map, 'partNumber'))
+              else ())
+        )))
+
+    for $uri in $uris
+    order by xs:int(fn:doc($uri)/eth:proposition/eth:coordinates/eth:ordinal) ascending
+    return
+        element gxql:proposition
+        {
+            element gxql:uri {$uri}
+        }
+
+};
+
 declare function gxqlr:proposition-field-resolver($field-name as xs:string) as xdmp:function
 {
          if ($field-name eq 'name') then xdmp:function(xs:QName('gxqlr:item-name-resolver'))
