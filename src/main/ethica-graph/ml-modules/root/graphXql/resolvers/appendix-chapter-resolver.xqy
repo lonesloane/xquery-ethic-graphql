@@ -35,6 +35,10 @@ declare function gxqlr:appendix-chapter-entity-resolver($var-map as map:map) as 
 
 declare function gxqlr:appendix-chapter-field-resolver($field-name as xs:string) as xdmp:function
 {
-    gxqlr:ethic-item-field-resolver($field-name)
+    if ($field-name eq ('name', 'uri', 'text', 'partNumber', 'itemNumber', 'descendants', 'references'))
+    then
+        gxqlr:ethic-item-field-resolver($field-name)
+    else
+        fn:error((), 'FIELD RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported field: "||$field-name))
 };
 

@@ -39,6 +39,8 @@ declare function gxqlr:ethic-item-field-resolver($field-name as xs:string) as xd
     else if ($field-name eq 'text') then xdmp:function(xs:QName('gxqlr:item-text-resolver'))
     else if ($field-name eq 'partNumber') then xdmp:function(xs:QName('gxqlr:item-partNumber-resolver'))
     else if ($field-name eq 'itemNumber') then xdmp:function(xs:QName('gxqlr:item-itemNumber-resolver'))
+    else if ($field-name eq 'descendants') then xdmp:function(xs:QName('gxqlr:item-descendants-resolver'))
+    else if ($field-name eq 'references') then xdmp:function(xs:QName('gxqlr:item-references-resolver'))
     else
         fn:error((), 'FIELD RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported field: "||$field-name))
 };

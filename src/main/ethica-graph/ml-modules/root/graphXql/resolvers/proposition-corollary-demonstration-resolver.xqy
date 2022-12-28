@@ -42,14 +42,13 @@ declare function gxqlr:proposition-corollary-demonstration-entity-resolver($var-
 
 declare function gxqlr:proposition-corollary-demonstration-field-resolver($field-name as xs:string) as xdmp:function
 {
-         if ($field-name eq 'name') then xdmp:function(xs:QName('gxqlr:item-name-resolver'))
-    else if ($field-name eq 'uri') then xdmp:function(xs:QName('gxqlr:item-uri-resolver'))
-    else if ($field-name eq 'text') then xdmp:function(xs:QName('gxqlr:item-text-resolver'))
-    else if ($field-name eq 'partNumber') then xdmp:function(xs:QName('gxqlr:item-partNumber-resolver'))
-    else if ($field-name eq 'itemNumber') then xdmp:function(xs:QName('gxqlr:item-itemNumber-resolver'))
-    else if ($field-name eq 'references') then xdmp:function(xs:QName('gxqlr:item-references-resolver'))
-    else if ($field-name eq 'propositionNumber') then xdmp:function(xs:QName('gxqlr:pcd-proposition-number-resolver'))
-    else if ($field-name eq 'propositionCorollaryNumber') then xdmp:function(xs:QName('gxqlr:pcd-proposition-corollary-number-resolver'))
+    if ($field-name eq ('name', 'uri', 'text', 'partNumber', 'itemNumber', 'descendants', 'references'))
+    then
+        gxqlr:ethic-item-field-resolver($field-name)
+    else if ($field-name eq 'propositionNumber') then
+        xdmp:function(xs:QName('gxqlr:pcd-proposition-number-resolver'))
+    else if ($field-name eq 'propositionCorollaryNumber') then
+        xdmp:function(xs:QName('gxqlr:pcd-proposition-corollary-number-resolver'))
     else
         fn:error((), 'FIELD RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported field: "||$field-name))
 };
