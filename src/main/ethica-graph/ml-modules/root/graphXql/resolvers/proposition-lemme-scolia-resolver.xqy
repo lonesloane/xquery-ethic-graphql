@@ -39,8 +39,7 @@ declare function gxqlr:proposition-lemme-scolia-entity-resolver($var-map as map:
 
 declare function gxqlr:proposition-lemme-scolia-field-resolver($field-name as xs:string) as xdmp:function
 {
-    if ($field-name eq ('name', 'uri', 'text', 'partNumber', 'itemNumber', 'descendants', 'references'))
-    then
+    if ($field-name eq $gxqlr:ETHIC-ITEM-FIELDS) then
         gxqlr:ethic-item-field-resolver($field-name)
     else if ($field-name eq 'propositionLemmeNumber') then
         xdmp:function(xs:QName('gxqlr:pls-proposition-lemme-number-resolver'))

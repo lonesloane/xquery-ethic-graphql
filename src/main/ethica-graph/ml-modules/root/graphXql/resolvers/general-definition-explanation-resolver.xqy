@@ -35,8 +35,7 @@ declare function gxqlr:general-definition-explanation-entity-resolver($var-map a
 
 declare function gxqlr:general-definition-explanation-field-resolver($field-name as xs:string) as xdmp:function
 {
-    if ($field-name eq ('name', 'uri', 'text', 'partNumber', 'itemNumber', 'descendants', 'references'))
-    then
+    if ($field-name eq $gxqlr:ETHIC-ITEM-FIELDS) then
         gxqlr:ethic-item-field-resolver($field-name)
     else
         fn:error((), 'FIELD RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported field: "||$field-name))

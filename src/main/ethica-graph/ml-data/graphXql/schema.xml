@@ -18,10 +18,16 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
                 <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
                     <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
@@ -41,22 +47,20 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
-                <field name="affectionDefinitionNumber">
-                    <Type name="Int"/>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="affectionDefinitionNumber">
+                    <Type name="Int"/>
                 </field>
             </fields>
         </Type>
@@ -75,10 +79,16 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
                 <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
                     <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
@@ -98,19 +108,17 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
                 <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="GeneralDefinition" kind="List" />
+                    <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -129,8 +137,17 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -149,8 +166,17 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -169,8 +195,17 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -189,10 +224,16 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
                 <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
                     <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
@@ -212,22 +253,20 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
-                <field name="definitionNumber">
-                    <Type name="Int"/>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Definition" kind="List" />
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="definitionNumber">
+                    <Type name="Int"/>
                 </field>
             </fields>
         </Type>
@@ -246,19 +285,17 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
                 <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
+                    <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -277,19 +314,17 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
                 <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
+                    <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -308,10 +343,16 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
                 <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
                     <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
@@ -331,22 +372,20 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
-                <field name="propositionNumber">
-                    <Type name="Int"/>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
                 </field>
             </fields>
         </Type>
@@ -365,25 +404,20 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
-                <field name="propositionNumber">
-                    <Type name="Int"/>
-                </field>
-                <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
-                </field>
                 <field name="descendants">
                     <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
                 </field>
             </fields>
         </Type>
@@ -402,25 +436,23 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="propositionCorollaryNumber">
                     <Type name="Int"/>
                 </field>
                 <field name="propositionNumber">
                     <Type name="Int"/>
-                </field>
-                <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -439,25 +471,23 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="propositionCorollaryNumber">
                     <Type name="Int"/>
                 </field>
                 <field name="propositionNumber">
                     <Type name="Int"/>
-                </field>
-                <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -476,22 +506,20 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
-                <field name="propositionNumber">
-                    <Type name="Int"/>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
                 </field>
             </fields>
         </Type>
@@ -510,25 +538,20 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
-                <field name="propositionNumber">
-                    <Type name="Int"/>
-                </field>
-                <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
-                </field>
                 <field name="descendants">
                     <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
                 </field>
             </fields>
         </Type>
@@ -547,25 +570,23 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="propositionLemmeNumber">
                     <Type name="Int"/>
                 </field>
                 <field name="propositionNumber">
                     <Type name="Int"/>
-                </field>
-                <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -584,25 +605,23 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="propositionLemmeNumber">
                     <Type name="Int"/>
                 </field>
                 <field name="propositionNumber">
                     <Type name="Int"/>
-                </field>
-                <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -621,25 +640,23 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="propositionLemmeNumber">
                     <Type name="Int"/>
                 </field>
                 <field name="propositionNumber">
                     <Type name="Int"/>
-                </field>
-                <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -658,25 +675,23 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="propositionLemmeNumber">
                     <Type name="Int"/>
                 </field>
                 <field name="propositionNumber">
                     <Type name="Int"/>
-                </field>
-                <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -695,25 +710,23 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="references">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="propositionLemmeNumber">
                     <Type name="Int"/>
                 </field>
                 <field name="propositionNumber">
                     <Type name="Int"/>
-                </field>
-                <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
                 </field>
             </fields>
         </Type>
@@ -732,22 +745,20 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
-                <field name="propositionNumber">
-                    <Type name="Int"/>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
                 </field>
             </fields>
         </Type>
@@ -766,22 +777,20 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
                 </field>
-                <field name="propositionNumber">
-                    <Type name="Int"/>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
-                    <Type name="Proposition" kind="List" />
+                    <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="propositionNumber">
+                    <Type name="Int"/>
                 </field>
             </fields>
         </Type>
@@ -794,8 +803,14 @@
                 <field name="uri">
                     <Type name="String"/>
                 </field>
+                <field name="type">
+                    <Type name="String"/>
+                </field>
                 <field name="text">
                     <Type name="String"/>
+                </field>
+                <field name="descendants">
+                    <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="references">
                     <args>

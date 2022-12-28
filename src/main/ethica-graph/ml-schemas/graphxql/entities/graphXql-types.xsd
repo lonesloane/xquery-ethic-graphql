@@ -7,6 +7,7 @@
       <xs:element name="partNumber" type="xs:int"/>
       <xs:element name="itemNumber" type="xs:int"/>
       <xs:element name="uri" type="xs:string"/>
+      <xs:element name="type" type="xs:string"/>
       <xs:element name="name" type="xs:string"/>
       <xs:element name="text" type="xs:string"/>
       <xs:element name="references">
@@ -16,22 +17,19 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="descendants">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="AffectionDefinition">
     <xs:complexContent>
-      <xs:extension base="gxql:EthicItem">
-        <xs:sequence>
-          <xs:element name="descendants">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
+      <xs:extension base="gxql:EthicItem"/>
     </xs:complexContent>
   </xs:complexType>
 
@@ -59,17 +57,7 @@
 
   <xs:complexType name="GeneralDefinition">
     <xs:complexContent>
-      <xs:extension base="gxql:EthicItem">
-        <xs:sequence>
-          <xs:element name="descendants">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
+      <xs:extension base="gxql:EthicItem"/>
     </xs:complexContent>
   </xs:complexType>
 
@@ -81,8 +69,7 @@
 
   <xs:complexType name="GeneralDefinitionExplanation">
     <xs:complexContent>
-      <xs:extension base="gxql:EthicItem">
-      </xs:extension>
+      <xs:extension base="gxql:EthicItem"/>
     </xs:complexContent>
   </xs:complexType>
 
@@ -130,17 +117,7 @@
 
   <xs:complexType name="Definition">
     <xs:complexContent>
-      <xs:extension base="gxql:EthicItem">
-        <xs:sequence>
-          <xs:element name="descendants">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
+      <xs:extension base="gxql:EthicItem"/>
     </xs:complexContent>
   </xs:complexType>
 
@@ -192,17 +169,7 @@
 
   <xs:complexType name="Proposition">
     <xs:complexContent>
-      <xs:extension base="gxql:EthicItem">
-        <xs:sequence>
-          <xs:element name="descendants">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
+      <xs:extension base="gxql:EthicItem"/>
     </xs:complexContent>
   </xs:complexType>
 
@@ -243,13 +210,6 @@
       <xs:extension base="gxql:EthicItem">
         <xs:sequence>
           <xs:element name="propositionNumber" type="xs:int"/>
-          <xs:element name="descendants">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -338,13 +298,6 @@
       <xs:extension base="gxql:EthicItem">
         <xs:sequence>
           <xs:element name="propositionNumber" type="xs:int"/>
-          <xs:element name="descendants">
-            <xs:complexType>
-              <xs:sequence>
-                <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
-              </xs:sequence>
-            </xs:complexType>
-          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

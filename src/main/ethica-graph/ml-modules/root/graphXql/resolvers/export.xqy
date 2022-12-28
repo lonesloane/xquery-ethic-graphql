@@ -84,6 +84,8 @@ declare function gxqlr:get-field-resolver($entity as element(), $field-name as x
             case $o as element(*, gxql:DefinitionExplanation) return gxqlr:definition-explanation-field-resolver($field-name)
             case $o as element(*, gxql:GeneralDefinition) return gxqlr:general-definition-field-resolver($field-name)
             case $o as element(*, gxql:GeneralDefinitionExplanation) return gxqlr:general-definition-explanation-field-resolver($field-name)
+            case $o as element(*, gxql:Postulate) return gxqlr:postulate-field-resolver($field-name)
+            case $o as element(*, gxql:Preface) return gxqlr:preface-field-resolver($field-name)
             case $o as element(*, gxql:Proposition) return gxqlr:proposition-field-resolver($field-name)
             case $o as element(*, gxql:PropositionAxiom) return gxqlr:proposition-axiom-field-resolver($field-name)
             case $o as element(*, gxql:PropositionCorollary) return gxqlr:proposition-corollary-field-resolver($field-name)
@@ -98,8 +100,6 @@ declare function gxqlr:get-field-resolver($entity as element(), $field-name as x
             case $o as element(*, gxql:PropositionLemmeScolia) return gxqlr:proposition-lemme-scolia-field-resolver($field-name)
             case $o as element(*, gxql:PropositionPostulate) return gxqlr:proposition-postulate-field-resolver($field-name)
             case $o as element(*, gxql:PropositionScolia) return gxqlr:proposition-scolia-field-resolver($field-name)
-            case $o as element(*, gxql:Postulate) return gxqlr:postulate-field-resolver($field-name)
-            case $o as element(*, gxql:Preface) return gxqlr:preface-field-resolver($field-name)
             default return fn:error((), 'RESOLVER EXCEPTION', ("500", "Internal server error", "unexpected entity type: ", xdmp:describe($entity, (), ())))
 };
 
@@ -129,6 +129,8 @@ declare function gxqlr:typename-resolver($entity as element(), $var-map as map:m
         case $o as element(*, gxql:DefinitionExplanation) return 'DefinitionExplanation'
         case $o as element(*, gxql:GeneralDefinition) return 'GeneralDefinition'
         case $o as element(*, gxql:GeneralDefinitionExplanation) return 'GeneralDefinitionExplanation'
+        case $o as element(*, gxql:Postulate) return 'Postulate'
+        case $o as element(*, gxql:Preface) return 'Preface'
         case $o as element(*, gxql:Proposition) return 'Proposition'
         case $o as element(*, gxql:PropositionAxiom) return 'PropositionAxiom'
         case $o as element(*, gxql:PropositionCorollary) return 'PropositionCorollary'
@@ -143,8 +145,6 @@ declare function gxqlr:typename-resolver($entity as element(), $var-map as map:m
         case $o as element(*, gxql:PropositionLemmeScolia) return 'PropositionLemmeScolia'
         case $o as element(*, gxql:PropositionPostulate) return 'PropositionPostulate'
         case $o as element(*, gxql:PropositionScolia) return 'PropositionScolia'
-        case $o as element(*, gxql:Postulate) return 'Postulate'
-        case $o as element(*, gxql:Preface) return 'Preface'
         default return fn:error((), 'RESOLVER EXCEPTION', ("500", "Internal server error", "unexpected entity type: ", xdmp:describe($entity, (), ())))
 };
 

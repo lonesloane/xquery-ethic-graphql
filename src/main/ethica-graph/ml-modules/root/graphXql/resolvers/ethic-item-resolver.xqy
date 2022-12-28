@@ -32,9 +32,12 @@ import schema namespace gxql ="http://graph.x.ql"
 declare default element namespace "http://graph.x.ql";
 declare namespace eth="http://ethica.graph.ql";
 
+declare variable $gxqlr:ETHIC-ITEM-FIELDS := ('name', 'type', 'uri', 'text', 'partNumber', 'itemNumber', 'descendants', 'references');
+
 declare function gxqlr:ethic-item-field-resolver($field-name as xs:string) as xdmp:function
 {
          if ($field-name eq 'name') then xdmp:function(xs:QName('gxqlr:item-name-resolver'))
+    else if ($field-name eq 'type') then xdmp:function(xs:QName('gxqlr:item-type-resolver'))
     else if ($field-name eq 'uri') then xdmp:function(xs:QName('gxqlr:item-uri-resolver'))
     else if ($field-name eq 'text') then xdmp:function(xs:QName('gxqlr:item-text-resolver'))
     else if ($field-name eq 'partNumber') then xdmp:function(xs:QName('gxqlr:item-partNumber-resolver'))
@@ -42,12 +45,17 @@ declare function gxqlr:ethic-item-field-resolver($field-name as xs:string) as xd
     else if ($field-name eq 'descendants') then xdmp:function(xs:QName('gxqlr:item-descendants-resolver'))
     else if ($field-name eq 'references') then xdmp:function(xs:QName('gxqlr:item-references-resolver'))
     else
-        fn:error((), 'FIELD RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported field: "||$field-name))
+        fn:error((), 'ETHIC ITEM FIELD RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported field: "||$field-name))
 };
 
 declare function gxqlr:item-name-resolver($item as element(*, gxql:EthicItem), $var-map as map:map)
 {
     fn:doc($item/uri/fn:string())//eth:name/string()
+};
+
+declare function gxqlr:item-type-resolver($item as element(*, gxql:EthicItem), $var-map as map:map)
+{
+    fn:doc($item/uri/fn:string())//eth:type/string()
 };
 
 declare function gxqlr:item-uri-resolver($item as element(*, gxql:EthicItem), $var-map as map:map)

@@ -39,8 +39,7 @@ declare function gxqlr:proposition-lemme-corollary-entity-resolver($var-map as m
 
 declare function gxqlr:proposition-lemme-corollary-field-resolver($field-name as xs:string) as xdmp:function
 {
-    if ($field-name eq ('name', 'uri', 'text', 'partNumber', 'itemNumber', 'descendants', 'references'))
-    then
+    if ($field-name eq $gxqlr:ETHIC-ITEM-FIELDS) then
         gxqlr:ethic-item-field-resolver($field-name)
     else if ($field-name eq 'propositionLemmeNumber') then
         xdmp:function(xs:QName('gxqlr:plc-proposition-lemme-number-resolver'))
