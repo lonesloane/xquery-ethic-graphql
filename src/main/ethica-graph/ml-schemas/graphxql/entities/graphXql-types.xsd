@@ -13,7 +13,7 @@
       <xs:element name="references">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="reference" type="gxql:Proposition" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="reference" type="gxql:EthicItem" minOccurs="0" maxOccurs="unbounded" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -26,6 +26,12 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
+
+  <xs:element name="item" type="gxql:EthicItem">
+    <xs:annotation>
+      <xs:documentation>Ethics Generic Item</xs:documentation>
+    </xs:annotation>
+  </xs:element>
 
   <xs:complexType name="AffectionDefinition">
     <xs:complexContent>
@@ -205,6 +211,12 @@
     </xs:complexContent>
   </xs:complexType>
 
+  <xs:element name="propositionDemonstration" type="gxql:PropositionDemonstration">
+    <xs:annotation>
+      <xs:documentation>Ethics Proposition Demonstration Type</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
   <xs:complexType name="PropositionCorollary">
     <xs:complexContent>
       <xs:extension base="gxql:EthicItem">
@@ -252,12 +264,6 @@
   <xs:element name="propositionCorollaryScolia" type="gxql:PropositionCorollaryScolia">
     <xs:annotation>
       <xs:documentation>Ethics Proposition Corollary Demonstration Type</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-
-  <xs:element name="propositionDemonstration" type="gxql:PropositionDemonstration">
-    <xs:annotation>
-      <xs:documentation>Ethics Proposition Demonstration Type</xs:documentation>
     </xs:annotation>
   </xs:element>
 

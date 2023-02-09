@@ -20,10 +20,13 @@ declare function gxqlr:affection-definition-entity-resolver($var-map as map:map)
             map:get($var-map, 'uri')
         else if (map:contains($var-map, 'partNumber') and map:contains($var-map, 'itemNumber'))
         then
+            let $partNumber := map:get($var-map, 'partNumber') => xs:string()
+            let $itemNumber := map:get($var-map, 'itemNumber') => xs:string()
+            return
             cts:uris('', (), cts:and-query((
               cts:element-value-query(xs:QName('eth:type'), 'Affection-Definition'),
-              cts:element-value-query(xs:QName('eth:part-number'), map:get($var-map, 'partNumber')),
-              cts:element-value-query(xs:QName('eth:item-number'), map:get($var-map, 'itemNumber'))
+              cts:element-value-query(xs:QName('eth:part-number'), $partNumber),
+              cts:element-value-query(xs:QName('eth:item-number'), $itemNumber)
             )))
         else fn:error((), 'ENTITY RESOLVER EXCEPTION', ("500", "Internal server error", "No identifier received in variables: ", $var-map))
 
@@ -33,6 +36,26 @@ declare function gxqlr:affection-definition-entity-resolver($var-map as map:map)
             element gxql:uri {$uri}
         }
 
+};
+
+declare function gxqlr:affection-definition-list-resolver($var-map as map:map) as element(*, gxql:AffectionDefinition)*
+{
+    let $partNumber := map:get($var-map, 'partNumber') => xs:string()
+    let $uris :=
+        cts:uris('', (), cts:and-query((
+              cts:element-value-query(xs:QName('eth:type'), 'Affection-Definition'),
+              (if (map:contains($var-map, 'partNumber'))
+              then cts:element-value-query(xs:QName('eth:part-number'), $partNumber)
+              else ())
+        )))
+
+    for $uri in $uris
+    order by xs:int(fn:doc($uri)/eth:affection-definition/eth:coordinates/eth:ordinal) ascending
+    return
+        element gxql:affectionDefinition
+        {
+            element gxql:uri {$uri}
+        }
 };
 
 declare function gxqlr:affection-definition-field-resolver($field-name as xs:string) as xdmp:function

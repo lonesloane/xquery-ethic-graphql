@@ -813,14 +813,6 @@
                     <Type name="EthicItem" kind="List" />
                 </field>
                 <field name="references">
-                    <args>
-                        <Arg name="offset">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                        <Arg name="length">
-                            <Type name="Int" kind="Scalar" />
-                        </Arg>
-                    </args>
                     <Type name="EthicItem" kind="List" />
                 </field>
             </fields>
@@ -830,6 +822,15 @@
 
     <Query name="Query">
         <fields>
+
+            <field name="affectionDefinitions">
+                <Type name="AffectionDefinition" kind="List"/>
+                <args>
+                    <Arg name="partNumber" nullable="true">
+                        <Type name="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
 
             <field name="affectionDefinition">
                 <Type name="AffectionDefinition" />
@@ -906,6 +907,15 @@
                 </args>
             </field>
 
+            <field name="axioms">
+                <Type name="Axiom" kind="List" />
+                <args>
+                    <Arg name="partNumber" nullable="true">
+                        <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
             <field name="axiom">
                 <Type name="Axiom" />
                 <args>
@@ -926,6 +936,15 @@
                     </Arg>
                     <Arg name="itemNumber" nullable="false">
                         <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="definitions">
+                <Type name="Definition" kind="List"/>
+                <args>
+                    <Arg name="partNumber" nullable="true">
+                        <Type name="Int" kind="Scalar"/>
                     </Arg>
                 </args>
             </field>
@@ -953,6 +972,15 @@
                     </Arg>
                     <Arg name="itemNumber" nullable="false">
                         <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="postulates">
+                <Type name="Postulate" kind="List"/>
+                <args>
+                    <Arg name="partNumber" nullable="true">
+                        <Type name="Int" kind="Scalar"/>
                     </Arg>
                 </args>
             </field>
@@ -1202,6 +1230,15 @@
                     </Arg>
                     <Arg name="itemNumber" nullable="false">
                         <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="ethicItem">
+                <Type name="EthicItem" />
+                <args>
+                    <Arg name="uri" nullable="false">
+                        <Type name ="String" kind="Scalar"/>
                     </Arg>
                 </args>
             </field>

@@ -21,13 +21,17 @@ declare function gxqlr:proposition-corollary-demonstration-entity-resolver($var-
             and map:contains($var-map, 'propositionNumber')
             and map:contains($var-map, 'itemNumber'))
         then
+            let $partNumber := map:get($var-map, 'partNumber') => xs:string()
+            let $itemNumber := map:get($var-map, 'itemNumber') => xs:string()
+            let $propositionNumber := map:get($var-map, 'propositionNumber') => xs:string()
+            let $propositionCorollaryNumber := map:get($var-map, 'propositionCorollaryNumber') => xs:string()
             let $uri :=
                 cts:uris('', (), cts:and-query((
                   cts:element-value-query(xs:QName('eth:type'), 'Proposition-Corollary-Demonstration'),
-                  cts:element-value-query(xs:QName('eth:part-number'), map:get($var-map, 'partNumber')),
-                  cts:element-value-query(xs:QName('eth:proposition-corollary-number'), map:get($var-map, 'propositionCorollaryNumber')),
-                  cts:element-value-query(xs:QName('eth:proposition-number'), map:get($var-map, 'propositionNumber')),
-                  cts:element-value-query(xs:QName('eth:item-number'), map:get($var-map, 'itemNumber'))
+                  cts:element-value-query(xs:QName('eth:part-number'), $partNumber),
+                  cts:element-value-query(xs:QName('eth:proposition-corollary-number'), $propositionCorollaryNumber),
+                  cts:element-value-query(xs:QName('eth:proposition-number'), $propositionNumber),
+                  cts:element-value-query(xs:QName('eth:item-number'), $itemNumber)
                 )))
             return if ($uri) then $uri else ('null')
         else fn:error((), 'ENTITY RESOLVER EXCEPTION', ("500", "Internal server error", "No identifier received in variables: ", $var-map))

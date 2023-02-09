@@ -21,12 +21,17 @@ declare function gxqlr:proposition-lemme-axiom-entity-resolver($var-map as map:m
             and map:contains($var-map, 'propositionLemmeNumber')
             and map:contains($var-map, 'itemNumber'))
         then
+            let $partNumber := map:get($var-map, 'partNumber') => xs:string()
+            let $itemNumber := map:get($var-map, 'itemNumber') => xs:string()
+            let $propositionNumber := map:get($var-map, 'propositionNumber') => xs:string()
+            let $propositionLemmeNumber := map:get($var-map, 'propositionLemmeNumber') => xs:string()
+            return
             cts:uris('', (), cts:and-query((
               cts:element-value-query(xs:QName('eth:type'), 'Proposition-Lemme-Axiom'),
-              cts:element-value-query(xs:QName('eth:part-number'), map:get($var-map, 'partNumber')),
-              cts:element-value-query(xs:QName('eth:proposition-lemme-number'), map:get($var-map, 'propositionLemmeNumber')),
-              cts:element-value-query(xs:QName('eth:proposition-number'), map:get($var-map, 'propositionNumber')),
-              cts:element-value-query(xs:QName('eth:item-number'), map:get($var-map, 'itemNumber'))
+              cts:element-value-query(xs:QName('eth:part-number'), $partNumber),
+              cts:element-value-query(xs:QName('eth:item-number'), $itemNumber),
+              cts:element-value-query(xs:QName('eth:proposition-number'), $propositionNumber),
+              cts:element-value-query(xs:QName('eth:item-number'), $propositionLemmeNumber)
             )))
         else fn:error((), 'ENTITY RESOLVER EXCEPTION', ("500", "Internal server error", "No identifier received in variables: ", $var-map))
 

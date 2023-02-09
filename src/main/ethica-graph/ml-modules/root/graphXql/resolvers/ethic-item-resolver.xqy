@@ -34,6 +34,20 @@ declare namespace eth="http://ethica.graph.ql";
 
 declare variable $gxqlr:ETHIC-ITEM-FIELDS := ('name', 'type', 'uri', 'text', 'partNumber', 'itemNumber', 'descendants', 'references');
 
+declare function gxqlr:ethic-item-entity-resolver($var-map as map:map) as element(*, gxql:EthicItem)?
+{
+    let $uri :=
+        if (map:contains($var-map, 'uri'))
+        then map:get($var-map, 'uri')
+        else fn:error((), 'ENTITY RESOLVER EXCEPTION', ("500", "Internal server error", "No uri received in variables: ", $var-map))
+
+    return
+        element gxql:item
+        {
+            element gxql:uri {$uri}
+        }
+};
+
 declare function gxqlr:ethic-item-field-resolver($field-name as xs:string) as xdmp:function
 {
          if ($field-name eq 'name') then xdmp:function(xs:QName('gxqlr:item-name-resolver'))

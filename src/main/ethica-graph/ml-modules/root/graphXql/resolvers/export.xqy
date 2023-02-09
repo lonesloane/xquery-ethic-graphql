@@ -4,6 +4,7 @@ module namespace gxqlr = "http://graph.x.ql/resolvers";
 
 import module namespace gxqlr = "http://graph.x.ql/resolvers"
     at
+    "/graphXql/resolvers/ethic-item-resolver.xqy",
     "/graphXql/resolvers/affection-definition-resolver.xqy",
     "/graphXql/resolvers/affection-definition-explanation-resolver.xqy",
     "/graphXql/resolvers/appendix-resolver.xqy",
@@ -36,18 +37,22 @@ import schema namespace gxql = "http://graph.x.ql"
 declare function gxqlr:get-entity-resolver($entity-name as xs:string) as xdmp:function
 {
     if      ($entity-name eq 'affectionDefinition') then xdmp:function(xs:QName('gxqlr:affection-definition-entity-resolver'))
+    else if ($entity-name eq 'affectionDefinitions') then xdmp:function(xs:QName('gxqlr:affection-definition-list-resolver'))
     else if ($entity-name eq 'affectionDefinitionExplanation') then xdmp:function(xs:QName('gxqlr:affection-definition-explanation-entity-resolver'))
     else if ($entity-name eq 'appendix') then xdmp:function(xs:QName('gxqlr:appendix-entity-resolver'))
     else if ($entity-name eq 'appendixChapter') then xdmp:function(xs:QName('gxqlr:appendix-chapter-entity-resolver'))
+    else if ($entity-name eq 'axioms') then xdmp:function(xs:QName('gxqlr:axiom-list-resolver'))
     else if ($entity-name eq 'axiom') then xdmp:function(xs:QName('gxqlr:axiom-entity-resolver'))
     else if ($entity-name eq 'generalDefinition') then xdmp:function(xs:QName('gxqlr:general-definition-entity-resolver'))
     else if ($entity-name eq 'generalDefinitionExplanation') then xdmp:function(xs:QName('gxqlr:general-definition-explanation-entity-resolver'))
     else if ($entity-name eq 'definition') then xdmp:function(xs:QName('gxqlr:definition-entity-resolver'))
+    else if ($entity-name eq 'definitions') then xdmp:function(xs:QName('gxqlr:definition-list-resolver'))
     else if ($entity-name eq 'definitionExplanation') then xdmp:function(xs:QName('gxqlr:definition-explanation-entity-resolver'))
     else if ($entity-name eq 'postulate') then xdmp:function(xs:QName('gxqlr:postulate-entity-resolver'))
+    else if ($entity-name eq 'postulates') then xdmp:function(xs:QName('gxqlr:postulate-list-resolver'))
     else if ($entity-name eq 'preface') then xdmp:function(xs:QName('gxqlr:preface-entity-resolver'))
     else if ($entity-name eq 'proposition') then xdmp:function(xs:QName('gxqlr:proposition-entity-resolver'))
-    else if ($entity-name eq 'propositions') then xdmp:function(xs:QName('gxqlr:propositions-entity-resolver'))
+    else if ($entity-name eq 'propositions') then xdmp:function(xs:QName('gxqlr:proposition-list-resolver'))
     else if ($entity-name eq 'propositionAxiom') then xdmp:function(xs:QName('gxqlr:proposition-axiom-entity-resolver'))
     else if ($entity-name eq 'propositionCorollary') then xdmp:function(xs:QName('gxqlr:proposition-corollary-entity-resolver'))
     else if ($entity-name eq 'propositionCorollaryDemonstration') then xdmp:function(xs:QName('gxqlr:proposition-corollary-demonstration-entity-resolver'))
@@ -61,6 +66,7 @@ declare function gxqlr:get-entity-resolver($entity-name as xs:string) as xdmp:fu
     else if ($entity-name eq 'propositionLemmeScolia') then xdmp:function(xs:QName('gxqlr:proposition-lemme-scolia-entity-resolver'))
     else if ($entity-name eq 'propositionPostulate') then xdmp:function(xs:QName('gxqlr:proposition-postulate-entity-resolver'))
     else if ($entity-name eq 'propositionScolia') then xdmp:function(xs:QName('gxqlr:proposition-scolia-entity-resolver'))
+    else if ($entity-name eq 'ethicItem') then xdmp:function(xs:QName('gxqlr:ethic-item-entity-resolver'))
     else  fn:error((), 'RESOLVER EXCEPTION', ("500", "Internal server error", "unexpected entity name: ", $entity-name))
 };
 
@@ -100,6 +106,7 @@ declare function gxqlr:get-field-resolver($entity as element(), $field-name as x
             case $o as element(*, gxql:PropositionLemmeScolia) return gxqlr:proposition-lemme-scolia-field-resolver($field-name)
             case $o as element(*, gxql:PropositionPostulate) return gxqlr:proposition-postulate-field-resolver($field-name)
             case $o as element(*, gxql:PropositionScolia) return gxqlr:proposition-scolia-field-resolver($field-name)
+            case $o as element(*, gxql:EthicItem) return gxqlr:ethic-item-field-resolver($field-name)
             default return fn:error((), 'RESOLVER EXCEPTION', ("500", "Internal server error", "unexpected entity type: ", xdmp:describe($entity, (), ())))
 };
 
@@ -145,6 +152,7 @@ declare function gxqlr:typename-resolver($entity as element(), $var-map as map:m
         case $o as element(*, gxql:PropositionLemmeScolia) return 'PropositionLemmeScolia'
         case $o as element(*, gxql:PropositionPostulate) return 'PropositionPostulate'
         case $o as element(*, gxql:PropositionScolia) return 'PropositionScolia'
+        case $o as element(*, gxql:EthicItem) return 'EthicItem'
         default return fn:error((), 'RESOLVER EXCEPTION', ("500", "Internal server error", "unexpected entity type: ", xdmp:describe($entity, (), ())))
 };
 

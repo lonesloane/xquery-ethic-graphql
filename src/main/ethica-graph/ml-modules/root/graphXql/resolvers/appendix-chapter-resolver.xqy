@@ -18,10 +18,13 @@ declare function gxqlr:appendix-chapter-entity-resolver($var-map as map:map) as 
             map:get($var-map, 'uri')
         else if (map:contains($var-map, 'partNumber') and map:contains($var-map, 'itemNumber'))
         then
+            let $partNumber := map:get($var-map, 'partNumber') => xs:string()
+            let $itemNumber := map:get($var-map, 'itemNumber') => xs:string()
+            return
             cts:uris('', (), cts:and-query((
               cts:element-value-query(xs:QName('eth:type'), 'Appendix-Chapter'),
-              cts:element-value-query(xs:QName('eth:part-number'), map:get($var-map, 'partNumber')),
-              cts:element-value-query(xs:QName('eth:item-number'), map:get($var-map, 'itemNumber'))
+              cts:element-value-query(xs:QName('eth:part-number'), $partNumber),
+              cts:element-value-query(xs:QName('eth:item-number'), $itemNumber)
             )))
         else fn:error((), 'ENTITY RESOLVER EXCEPTION', ("500", "Internal server error", "No identifier received in variables: ", $var-map))
 
