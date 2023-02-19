@@ -1,6 +1,7 @@
 xquery version "1.0-ml";
 
 module namespace gxqlr = "http://graph.x.ql/resolvers";
+
 import module namespace gxqlr = "http://graph.x.ql/resolvers"
     at "/graphXql/resolvers/ethic-item-resolver.xqy";
 
@@ -33,6 +34,26 @@ declare function gxqlr:preface-entity-resolver($var-map as map:map) as element(*
         {
             element gxql:uri {$uri}
         }
+};
+
+declare function gxqlr:preface-list-resolver($var-map as map:map) as element(*, gxql:Preface)*
+{
+    let $partNumber := map:get($var-map, 'partNumber') => xs:string()
+    let $uris :=
+        cts:uris('', (), cts:and-query((
+              cts:element-value-query(xs:QName('eth:type'), 'Preface'),
+              (if (map:contains($var-map, 'partNumber'))
+              then cts:element-value-query(xs:QName('eth:part-number'), $partNumber)
+              else ())
+        )))
+
+    for $uri in $uris
+    order by xs:int(fn:doc($uri)/eth:preface/eth:coordinates/eth:ordinal) ascending
+    return
+        element gxql:preface
+        {
+            element gxql:uri {$uri}
+        }
 
 };
 
@@ -43,4 +64,3 @@ declare function gxqlr:preface-field-resolver($field-name as xs:string) as xdmp:
     else
         fn:error((), 'FIELD RESOLVER EXCEPTION', ("500", "Internal server error", "unsupported field: "||$field-name))
 };
-

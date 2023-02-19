@@ -51,6 +51,7 @@ declare function gxqlr:get-entity-resolver($entity-name as xs:string) as xdmp:fu
     else if ($entity-name eq 'postulate') then xdmp:function(xs:QName('gxqlr:postulate-entity-resolver'))
     else if ($entity-name eq 'postulates') then xdmp:function(xs:QName('gxqlr:postulate-list-resolver'))
     else if ($entity-name eq 'preface') then xdmp:function(xs:QName('gxqlr:preface-entity-resolver'))
+    else if ($entity-name eq 'prefaces') then xdmp:function(xs:QName('gxqlr:preface-list-resolver'))
     else if ($entity-name eq 'proposition') then xdmp:function(xs:QName('gxqlr:proposition-entity-resolver'))
     else if ($entity-name eq 'propositions') then xdmp:function(xs:QName('gxqlr:proposition-list-resolver'))
     else if ($entity-name eq 'propositionAxiom') then xdmp:function(xs:QName('gxqlr:proposition-axiom-entity-resolver'))

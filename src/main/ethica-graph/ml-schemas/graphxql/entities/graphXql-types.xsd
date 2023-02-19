@@ -24,6 +24,20 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="previous">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="reference" type="gxql:EthicItem" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="next">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="descendant" type="gxql:EthicItem" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 

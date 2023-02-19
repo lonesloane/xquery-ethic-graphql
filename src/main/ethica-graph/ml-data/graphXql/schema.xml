@@ -30,6 +30,12 @@
                 <field name="references">
                     <Type name="EthicItem" kind="List" />
                 </field>
+                <field name="previous">
+                    <Type name="EthicItem" />
+                </field>
+                <field name="next">
+                    <Type name="EthicItem" />
+                </field>
             </fields>
         </Type>
 
@@ -149,6 +155,12 @@
                 <field name="references">
                     <Type name="EthicItem" kind="List" />
                 </field>
+                <field name="previous">
+                    <Type name="EthicItem" />
+                </field>
+                <field name="next">
+                    <Type name="EthicItem" />
+                </field>
             </fields>
         </Type>
 
@@ -236,6 +248,12 @@
                 <field name="references">
                     <Type name="EthicItem" kind="List" />
                 </field>
+                <field name="previous">
+                    <Type name="EthicItem" />
+                </field>
+                <field name="next">
+                    <Type name="EthicItem" />
+                </field>
             </fields>
         </Type>
 
@@ -297,6 +315,12 @@
                 <field name="references">
                     <Type name="EthicItem" kind="List" />
                 </field>
+                <field name="previous">
+                    <Type name="EthicItem" />
+                </field>
+                <field name="next">
+                    <Type name="EthicItem" />
+                </field>
             </fields>
         </Type>
 
@@ -326,6 +350,12 @@
                 <field name="references">
                     <Type name="EthicItem" kind="List" />
                 </field>
+                <field name="previous">
+                    <Type name="EthicItem" />
+                </field>
+                <field name="next">
+                    <Type name="EthicItem" />
+                </field>
             </fields>
         </Type>
 
@@ -354,6 +384,12 @@
                 </field>
                 <field name="references">
                     <Type name="EthicItem" kind="List" />
+                </field>
+                <field name="previous">
+                    <Type name="EthicItem" />
+                </field>
+                <field name="next">
+                    <Type name="EthicItem" />
                 </field>
             </fields>
         </Type>
@@ -815,6 +851,12 @@
                 <field name="references">
                     <Type name="EthicItem" kind="List" />
                 </field>
+                <field name="previous">
+                    <Type name="EthicItem" />
+                </field>
+                <field name="next">
+                    <Type name="EthicItem" />
+                </field>
             </fields>
         </Type>
 
@@ -993,6 +1035,15 @@
                     </Arg>
                     <Arg name="itemNumber" nullable="false">
                         <Type name ="Int" kind="Scalar"/>
+                    </Arg>
+                </args>
+            </field>
+
+            <field name="prefaces">
+                <Type name="Preface" kind="List"/>
+                <args>
+                    <Arg name="partNumber" nullable="true">
+                        <Type name="Int" kind="Scalar"/>
                     </Arg>
                 </args>
             </field>
